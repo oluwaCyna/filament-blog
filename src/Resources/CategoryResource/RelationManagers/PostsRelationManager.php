@@ -14,11 +14,6 @@ class PostsRelationManager extends RelationManager
 {
     protected static string $relationship = 'posts';
 
-    public static function getTitle(Model $ownerRecord, string $pageClass): string
-    {
-        return __('filament-blog::filament-blog.posts');
-    }
-
     public function isReadOnly(): bool
     {
         return false;
