@@ -13,7 +13,7 @@ class PostsRelationManager extends RelationManager
 {
     protected static string $relationship = 'posts';
 
-    public function getTitle(): string
+    public static function getTitle(): string
     {
         return __('filament-blog::filament-blog.posts');
     }

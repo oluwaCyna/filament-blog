@@ -12,6 +12,11 @@ class SeoDetailRelationManager extends RelationManager
 {
     protected static string $relationship = 'seoDetail';
 
+    public static function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.seo_details');
+    }
+
     public function form(Form $form): Form
     {
         return $form
