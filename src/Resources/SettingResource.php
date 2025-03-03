@@ -18,6 +18,11 @@ class SettingResource extends Resource
 
     protected static ?int $navigationSort = 8;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-blog::filament-blog.settings');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -34,21 +39,27 @@ class SettingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament-blog::filament-blog.title'))
                     ->limit(25)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->label(__('filament-blog::filament-blog.description'))
                     ->limit(30)
                     ->searchable(),
 
-                Tables\Columns\ImageColumn::make('logo'),
+                Tables\Columns\ImageColumn::make('logo')
+                    ->label(__('filament-blog::filament-blog.logo')),
 
-                Tables\Columns\TextColumn::make('organization_name'),
+                Tables\Columns\TextColumn::make('organization_name')
+                    ->label(__('filament-blog::filament-blog.organization_name')),
 
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament-blog::filament-blog.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament-blog::filament-blog.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

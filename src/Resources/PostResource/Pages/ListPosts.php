@@ -12,6 +12,11 @@ class ListPosts extends ListRecords
 {
     protected static string $resource = PostResource::class;
 
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.posts');
+    }
+
     protected function getHeaderActions(): array
     {
         return [
@@ -29,17 +34,21 @@ class ListPosts extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
+            'all' => Tab::make('All')
+                ->label(__('filament-blog::filament-blog.all')),
             'published' => Tab::make('Published')
+                ->label(__('filament-blog::filament-blog.published'))
                 ->modifyQueryUsing(function ($query) {
                     $query->published();
                 })->icon('heroicon-o-check-badge'),
             'pending' => Tab::make('Pending')
+                ->label(__('filament-blog::filament-blog.pending'))
                 ->modifyQueryUsing(function ($query) {
                     $query->pending();
                 })
                 ->icon('heroicon-o-clock'),
             'scheduled' => Tab::make('Scheduled')
+                ->label(__('filament-blog::filament-blog.scheduled'))
                 ->modifyQueryUsing(function ($query) {
                     $query->scheduled();
                 })

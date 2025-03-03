@@ -16,4 +16,9 @@ class EditSeoDetail extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.edit_seo_detail');
+    }
 }

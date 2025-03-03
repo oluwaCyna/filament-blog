@@ -26,24 +26,26 @@ class Category extends Model
 
     public function posts(): BelongsToMany
     {
-        return $this->belongsToMany(Post::class, config('filamentblog.tables.prefix').'category_'.config('filamentblog.tables.prefix').'post');
+        return $this->belongsToMany(Post::class, config('filamentblog.tables.prefix') . 'category_' . config('filamentblog.tables.prefix') . 'post');
     }
 
     public static function getForm()
     {
         return [
             TextInput::make('name')
+                ->label(__('filament-blog::filament-blog.name'))
                 ->live(true)
                 ->afterStateUpdated(function (Get $get, Set $set, ?string $operation, ?string $old, ?string $state) {
 
                     $set('slug', Str::slug($state));
                 })
-                ->unique(config('filamentblog.tables.prefix').'categories', 'name', null, 'id')
+                ->unique(config('filamentblog.tables.prefix') . 'categories', 'name', null, 'id')
                 ->required()
                 ->maxLength(155),
 
             TextInput::make('slug')
-                ->unique(config('filamentblog.tables.prefix').'categories', 'slug', null, 'id')
+                ->label(__('filament-blog::filament-blog.slug'))
+                ->unique(config('filamentblog.tables.prefix') . 'categories', 'slug', null, 'id')
                 ->readOnly()
                 ->maxLength(255),
         ];

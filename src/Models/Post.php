@@ -64,7 +64,7 @@ class Post extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, config('filamentblog.tables.prefix').'category_'.config('filamentblog.tables.prefix').'post');
+        return $this->belongsToMany(Category::class, config('filamentblog.tables.prefix') . 'category_' . config('filamentblog.tables.prefix') . 'post');
     }
 
     public function comments(): hasmany
@@ -74,7 +74,7 @@ class Post extends Model
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class,config('filamentblog.tables.prefix').'post_'.config('filamentblog.tables.prefix').'tag');
+        return $this->belongsToMany(Tag::class, config('filamentblog.tables.prefix') . 'post_' . config('filamentblog.tables.prefix') . 'tag');
     }
 
     public function user(): BelongsTo
@@ -89,7 +89,7 @@ class Post extends Model
 
     public function isNotPublished()
     {
-        return ! $this->isStatusPublished();
+        return !$this->isStatusPublished();
     }
 
     public function scopePublished(Builder $query)
@@ -125,24 +125,27 @@ class Post extends Model
     public function relatedPosts($take = 3)
     {
         return $this->whereHas('categories', function ($query) {
-            $query->whereIn(config('filamentblog.tables.prefix').'categories.id', $this->categories->pluck('id'))
-                ->whereNotIn(config('filamentblog.tables.prefix').'posts.id', [$this->id]);
+            $query->whereIn(config('filamentblog.tables.prefix') . 'categories.id', $this->categories->pluck('id'))
+                ->whereNotIn(config('filamentblog.tables.prefix') . 'posts.id', [$this->id]);
         })->published()->with('user')->take($take)->get();
     }
 
     protected function getFeaturePhotoAttribute()
     {
-        return asset('storage/'.$this->cover_photo_path);
+        return asset('storage/' . $this->cover_photo_path);
     }
 
     public static function getForm()
     {
         return [
             Section::make('Blog Details')
+                ->label(__('filamentblog::filamentblog.blog_details'))
                 ->schema([
                     Fieldset::make('Titles')
+                        ->label(__('filamentblog::filamentblog.titles'))
                         ->schema([
                             Select::make('category_id')
+                                ->label(__('filamentblog::filamentblog.category'))
                                 ->multiple()
                                 ->preload()
                                 ->createOptionForm(Category::getForm())
@@ -151,23 +154,27 @@ class Post extends Model
                                 ->columnSpanFull(),
 
                             TextInput::make('title')
+                                ->label(__('filamentblog::filamentblog.title'))
                                 ->live(true)
-                                ->afterStateUpdated(fn (Set $set, ?string $state) => $set(
+                                ->afterStateUpdated(fn(Set $set, ?string $state) => $set(
                                     'slug',
                                     Str::slug($state)
                                 ))
                                 ->required()
-                                ->unique(config('filamentblog.tables.prefix').'posts', 'title', null, 'id')
+                                ->unique(config('filamentblog.tables.prefix') . 'posts', 'title', null, 'id')
                                 ->maxLength(255),
 
                             TextInput::make('slug')
+                                ->label(__('filamentblog::filamentblog.slug'))
                                 ->maxLength(255),
 
                             Textarea::make('sub_title')
+                                ->label(__('filamentblog::filamentblog.sub_title'))
                                 ->maxLength(255)
                                 ->columnSpanFull(),
 
                             Select::make('tag_id')
+                                ->label(__('filamentblog::filamentblog.tags'))
                                 ->multiple()
                                 ->preload()
                                 ->createOptionForm(Tag::getForm())
@@ -176,14 +183,17 @@ class Post extends Model
                                 ->columnSpanFull(),
                         ]),
                     TiptapEditor::make('body')
+                        ->label(__('filamentblog::filamentblog.body'))
                         ->profile('default')
                         ->disableFloatingMenus()
                         ->extraInputAttributes(['style' => 'max-height: 30rem; min-height: 24rem'])
                         ->required()
                         ->columnSpanFull(),
                     Fieldset::make('Feature Image')
+                        ->label(__('filamentblog::filamentblog.feature_image'))
                         ->schema([
                             FileUpload::make('cover_photo_path')
+                                ->label(__('filamentblog::filamentblog.feature_image'))
                                 ->label('Cover Photo')
                                 ->directory('/blog-feature-images')
                                 ->hint('This cover image is used in your blog post as a feature image. Recommended image size 1200 X 628')
@@ -193,19 +203,24 @@ class Post extends Model
                                 ->maxSize(1024 * 5)
                                 ->rules('dimensions:max_width=1920,max_height=1004')
                                 ->required(),
-                            TextInput::make('photo_alt_text')->required(),
+                            TextInput::make('photo_alt_text')
+                                ->label(__('filamentblog::filamentblog.alt_text'))
+                                ->required(),
                         ])->columns(1),
 
                     Fieldset::make('Status')
+                        ->label(__('filamentblog::filamentblog.status'))
                         ->schema([
 
                             ToggleButtons::make('status')
+                                ->label(__('filamentblog::filamentblog.status'))
                                 ->live()
                                 ->inline()
                                 ->options(PostStatus::class)
                                 ->required(),
 
                             DateTimePicker::make('scheduled_for')
+                                ->label(__('filamentblog::filamentblog.scheduled_for'))
                                 ->visible(function ($get) {
                                     return $get('status') === PostStatus::SCHEDULED->value;
                                 })
@@ -216,6 +231,7 @@ class Post extends Model
                                 ->native(false),
                         ]),
                     Select::make(config('filamentblog.user.foreign_key'))
+                        ->label(__('filamentblog::filamentblog.author'))
                         ->relationship('user', config('filamentblog.user.columns.name'))
                         ->nullable(false)
                         ->default(auth()->id()),

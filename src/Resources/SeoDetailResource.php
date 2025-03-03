@@ -18,6 +18,11 @@ class SeoDetailResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
+    public static function getNavigationLabel(): string
+    {
+        return __('filament-blog::filament-blog.seo_details');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -30,17 +35,22 @@ class SeoDetailResource extends Resource
             ->striped()
             ->columns([
                 Tables\Columns\TextColumn::make('post.title')
+                    ->label(__('filament-blog::filament-blog.post'))
                     ->limit(20),
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament-blog::filament-blog.title'))
                     ->limit(20)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('keywords')->badge()
+                    ->label(__('filament-blog::filament-blog.keywords'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament-blog::filament-blog.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('filament-blog::filament-blog.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

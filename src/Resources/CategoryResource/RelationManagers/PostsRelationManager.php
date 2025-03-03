@@ -13,6 +13,11 @@ class PostsRelationManager extends RelationManager
 {
     protected static string $relationship = 'posts';
 
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.posts');
+    }
+
     public function isReadOnly(): bool
     {
         return false;
@@ -30,11 +35,13 @@ class PostsRelationManager extends RelationManager
             ->recordTitleAttribute('title')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                ->label(__('filament-blog::filament-blog.title'))
                     ->limit(40)
                     ->description(function (Post $record) {
                         return Str::limit($record->sub_title);
                     }),
                 Tables\Columns\TextColumn::make('status')
+                    ->label(__('filament-blog::filament-blog.status'))
                     ->badge()
                     ->color(function ($state) {
                         return $state->getColor();

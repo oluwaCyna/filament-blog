@@ -9,8 +9,13 @@ class CreateSetting extends CreateRecord
 {
     protected static string $resource = SettingResource::class;
 
-//    protected function beforeCreate(): void
+    //    protected function beforeCreate(): void
 //    {
 //        dd($this->data);
 //    }
+
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.create_setting');
+    }
 }

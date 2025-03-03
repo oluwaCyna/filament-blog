@@ -26,23 +26,25 @@ class Tag extends Model
     public function posts(): BelongsToMany
     {
 
-        return $this->belongsToMany(Post::class, config('filamentblog.tables.prefix').'post_'.config('filamentblog.tables.prefix').'tag');
+        return $this->belongsToMany(Post::class, config('filamentblog.tables.prefix') . 'post_' . config('filamentblog.tables.prefix') . 'tag');
     }
 
     public static function getForm(): array
     {
         return [
             TextInput::make('name')
+                ->label(__('filament-blog::filament-blog.name'))
                 ->live(true)->afterStateUpdated(fn(Set $set, ?string $state) => $set(
                     'slug',
                     Str::slug($state)
                 ))
-                ->unique(config('filamentblog.tables.prefix').'tags', 'name', null, 'id')
+                ->unique(config('filamentblog.tables.prefix') . 'tags', 'name', null, 'id')
                 ->required()
                 ->maxLength(50),
 
             TextInput::make('slug')
-                ->unique(config('filamentblog.tables.prefix').'tags', 'slug', null, 'id')
+                ->label(__('filament-blog::filament-blog.slug'))
+                ->unique(config('filamentblog.tables.prefix') . 'tags', 'slug', null, 'id')
                 ->readOnly()
                 ->maxLength(155),
         ];

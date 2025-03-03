@@ -19,4 +19,9 @@ class ViewCategory extends ViewRecord
                 ->form(Category::getForm()),
         ];
     }
+
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.view_category');
+    }
 }

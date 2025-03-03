@@ -16,4 +16,9 @@ class ListSettings extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.settings');
+    }
 }

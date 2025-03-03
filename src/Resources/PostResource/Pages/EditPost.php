@@ -11,6 +11,11 @@ class EditPost extends EditRecord
 {
     protected static string $resource = PostResource::class;
 
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.edit_post');
+    }
+    
     protected function getHeaderActions(): array
     {
         return [

@@ -8,4 +8,9 @@ use Firefly\FilamentBlog\Resources\TagResource;
 class CreateTag extends CreateRecord
 {
     protected static string $resource = TagResource::class;
+
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.create_tag');
+    }
 }

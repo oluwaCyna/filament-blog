@@ -13,6 +13,11 @@ class CreatePost extends CreateRecord
 {
     protected static string $resource = PostResource::class;
 
+    public function getTitle(): string
+    {
+        return __('filament-blog::filament-blog.create_post');
+    }
+
     //    protected function mutateFormDataBeforeCreate(array $data): array
     //    {
     //        dd($data);

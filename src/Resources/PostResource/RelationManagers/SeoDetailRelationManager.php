@@ -23,9 +23,13 @@ class SeoDetailRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('title')
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('keywords')->badge(),
+                Tables\Columns\TextColumn::make('title')
+                    ->label(__('filament-blog::filament-blog.title')),
+                Tables\Columns\TextColumn::make('description')
+                    ->label(__('filament-blog::filament-blog.description')),
+                Tables\Columns\TextColumn::make('keywords')
+                    ->label(__('filament-blog::filament-blog.keywords'))
+                    ->badge(),
             ])
             ->filters([
                 //

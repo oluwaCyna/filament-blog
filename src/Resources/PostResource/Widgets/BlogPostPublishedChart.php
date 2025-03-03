@@ -10,9 +10,9 @@ class BlogPostPublishedChart extends BaseWidget
     protected function getStats(): array
     {
         return [
-            BaseWidget\Stat::make('Published Post', Post::published()->count()),
-            BaseWidget\Stat::make('Scheduled Post', Post::scheduled()->count()),
-            BaseWidget\Stat::make('Pending Post', Post::pending()->count()),
+            BaseWidget\Stat::make(__('filament-blog::filament-blog.published'), Post::published()->count()),
+            BaseWidget\Stat::make(__('filament-blog::filament-blog.scheduled'), Post::scheduled()->count()),
+            BaseWidget\Stat::make(__('filament-blog::filament-blog.pending'), Post::pending()->count()),
         ];
     }
 }
