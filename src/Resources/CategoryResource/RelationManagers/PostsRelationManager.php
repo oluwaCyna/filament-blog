@@ -6,6 +6,7 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Firefly\FilamentBlog\Models\Post;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,7 @@ class PostsRelationManager extends RelationManager
 {
     protected static string $relationship = 'posts';
 
-    public static function getTitle(): string
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
         return __('filament-blog::filament-blog.posts');
     }
@@ -35,7 +36,7 @@ class PostsRelationManager extends RelationManager
             ->recordTitleAttribute('title')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                ->label(__('filament-blog::filament-blog.title'))
+                    ->label(__('filament-blog::filament-blog.title'))
                     ->limit(40)
                     ->description(function (Post $record) {
                         return Str::limit($record->sub_title);

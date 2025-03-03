@@ -6,13 +6,14 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 use Firefly\FilamentBlog\Models\SeoDetail;
 
 class SeoDetailRelationManager extends RelationManager
 {
     protected static string $relationship = 'seoDetail';
 
-    public static function getTitle(): string
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
         return __('filament-blog::filament-blog.seo_details');
     }
