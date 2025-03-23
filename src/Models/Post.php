@@ -139,13 +139,13 @@ class Post extends Model
     {
         return [
             Section::make('Blog Details')
-                ->label(__('filamentblog::filamentblog.blog_details'))
+                ->label(__('messages.filament-blog.blog_details'))
                 ->schema([
                     Fieldset::make('Titles')
-                        ->label(__('filamentblog::filamentblog.titles'))
+                        ->label(__('messages.filament-blog.titles'))
                         ->schema([
                             Select::make('category_id')
-                                ->label(__('filamentblog::filamentblog.category'))
+                                ->label(__('messages.filament-blog.category'))
                                 ->multiple()
                                 ->preload()
                                 ->createOptionForm(Category::getForm())
@@ -154,7 +154,7 @@ class Post extends Model
                                 ->columnSpanFull(),
 
                             TextInput::make('title')
-                                ->label(__('filamentblog::filamentblog.title'))
+                                ->label(__('messages.filament-blog.title'))
                                 ->live(true)
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set(
                                     'slug',
@@ -165,16 +165,16 @@ class Post extends Model
                                 ->maxLength(255),
 
                             TextInput::make('slug')
-                                ->label(__('filamentblog::filamentblog.slug'))
+                                ->label(__('messages.filament-blog.slug'))
                                 ->maxLength(255),
 
                             Textarea::make('sub_title')
-                                ->label(__('filamentblog::filamentblog.sub_title'))
+                                ->label(__('messages.filament-blog.sub_title'))
                                 ->maxLength(255)
                                 ->columnSpanFull(),
 
                             Select::make('tag_id')
-                                ->label(__('filamentblog::filamentblog.tags'))
+                                ->label(__('messages.filament-blog.tags'))
                                 ->multiple()
                                 ->preload()
                                 ->createOptionForm(Tag::getForm())
@@ -183,17 +183,17 @@ class Post extends Model
                                 ->columnSpanFull(),
                         ]),
                     TiptapEditor::make('body')
-                        ->label(__('filamentblog::filamentblog.body'))
+                        ->label(__('messages.filament-blog.body'))
                         ->profile('default')
                         ->disableFloatingMenus()
                         ->extraInputAttributes(['style' => 'max-height: 30rem; min-height: 24rem'])
                         ->required()
                         ->columnSpanFull(),
                     Fieldset::make('Feature Image')
-                        ->label(__('filamentblog::filamentblog.feature_image'))
+                        ->label(__('messages.filament-blog.feature_image'))
                         ->schema([
                             FileUpload::make('cover_photo_path')
-                                ->label(__('filamentblog::filamentblog.feature_image'))
+                                ->label(__('messages.filament-blog.feature_image'))
                                 ->label('Cover Photo')
                                 ->directory('/blog-feature-images')
                                 ->hint('This cover image is used in your blog post as a feature image. Recommended image size 1200 X 628')
@@ -204,23 +204,23 @@ class Post extends Model
                                 ->rules('dimensions:max_width=1920,max_height=1004')
                                 ->required(),
                             TextInput::make('photo_alt_text')
-                                ->label(__('filamentblog::filamentblog.alt_text'))
+                                ->label(__('messages.filament-blog.alt_text'))
                                 ->required(),
                         ])->columns(1),
 
                     Fieldset::make('Status')
-                        ->label(__('filamentblog::filamentblog.status'))
+                        ->label(__('messages.filament-blog.status'))
                         ->schema([
 
                             ToggleButtons::make('status')
-                                ->label(__('filamentblog::filamentblog.status'))
+                                ->label(__('messages.filament-blog.status'))
                                 ->live()
                                 ->inline()
                                 ->options(PostStatus::class)
                                 ->required(),
 
                             DateTimePicker::make('scheduled_for')
-                                ->label(__('filamentblog::filamentblog.scheduled_for'))
+                                ->label(__('messages.filament-blog.scheduled_for'))
                                 ->visible(function ($get) {
                                     return $get('status') === PostStatus::SCHEDULED->value;
                                 })
@@ -231,7 +231,7 @@ class Post extends Model
                                 ->native(false),
                         ]),
                     Select::make(config('filamentblog.user.foreign_key'))
-                        ->label(__('filamentblog::filamentblog.author'))
+                        ->label(__('messages.filament-blog.author'))
                         ->relationship('user', config('filamentblog.user.columns.name'))
                         ->nullable(false)
                         ->default(auth()->id()),
