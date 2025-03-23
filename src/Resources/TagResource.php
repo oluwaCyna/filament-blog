@@ -20,7 +20,7 @@ class TagResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament-blog::filament-blog.tags');
+        return __('messages.filament-blog.tags');
     }
 
     public static function form(Form $form): Form
@@ -34,19 +34,19 @@ class TagResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('filament-blog::filament-blog.name'))
+                    ->label(__('messages.filament-blog.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
-                    ->label(__('filament-blog::filament-blog.slug')),
+                    ->label(__('messages.filament-blog.slug')),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('filament-blog::filament-blog.created_at'))
+                    ->label(__('messages.filament-blog.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label(__('filament-blog::filament-blog.updated_at'))
+                    ->label(__('messages.filament-blog.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

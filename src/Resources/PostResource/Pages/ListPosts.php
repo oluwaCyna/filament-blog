@@ -14,7 +14,7 @@ class ListPosts extends ListRecords
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.posts');
+        return __('messages.filament-blog.posts');
     }
 
     protected function getHeaderActions(): array
@@ -35,20 +35,20 @@ class ListPosts extends ListRecords
     {
         return [
             'all' => Tab::make('All')
-                ->label(__('filament-blog::filament-blog.all')),
+                ->label(__('messages.filament-blog.all')),
             'published' => Tab::make('Published')
-                ->label(__('filament-blog::filament-blog.published'))
+                ->label(__('messages.filament-blog.published'))
                 ->modifyQueryUsing(function ($query) {
                     $query->published();
                 })->icon('heroicon-o-check-badge'),
             'pending' => Tab::make('Pending')
-                ->label(__('filament-blog::filament-blog.pending'))
+                ->label(__('messages.filament-blog.pending'))
                 ->modifyQueryUsing(function ($query) {
                     $query->pending();
                 })
                 ->icon('heroicon-o-clock'),
             'scheduled' => Tab::make('Scheduled')
-                ->label(__('filament-blog::filament-blog.scheduled'))
+                ->label(__('messages.filament-blog.scheduled'))
                 ->modifyQueryUsing(function ($query) {
                     $query->scheduled();
                 })

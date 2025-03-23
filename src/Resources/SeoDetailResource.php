@@ -20,7 +20,7 @@ class SeoDetailResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament-blog::filament-blog.seo_details');
+        return __('messages.filament-blog.seo_details');
     }
 
     public static function form(Form $form): Form
@@ -35,22 +35,22 @@ class SeoDetailResource extends Resource
             ->striped()
             ->columns([
                 Tables\Columns\TextColumn::make('post.title')
-                    ->label(__('filament-blog::filament-blog.post'))
+                    ->label(__('messages.filament-blog.post'))
                     ->limit(20),
                 Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament-blog::filament-blog.title'))
+                    ->label(__('messages.filament-blog.title'))
                     ->limit(20)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('keywords')->badge()
-                    ->label(__('filament-blog::filament-blog.keywords'))
+                    ->label(__('messages.filament-blog.keywords'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('filament-blog::filament-blog.created_at'))
+                    ->label(__('messages.filament-blog.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label(__('filament-blog::filament-blog.updated_at'))
+                    ->label(__('messages.filament-blog.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

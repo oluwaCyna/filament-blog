@@ -19,6 +19,6 @@ class ListSeoDetails extends ListRecords
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.seo_details');
+        return __('messages.filament-blog.seo_details');
     }
 }

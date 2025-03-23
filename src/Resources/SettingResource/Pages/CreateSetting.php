@@ -16,6 +16,6 @@ class CreateSetting extends CreateRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.create_setting');
+        return __('messages.filament-blog.create_setting');
     }
 }

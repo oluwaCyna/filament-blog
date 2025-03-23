@@ -19,6 +19,6 @@ class EditTag extends EditRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.edit_tag');
+        return __('messages.filament-blog.edit_tag');
     }
 }

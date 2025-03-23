@@ -19,6 +19,6 @@ class ListSettings extends ListRecords
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.settings');
+        return __('messages.filament-blog.settings');
     }
 }

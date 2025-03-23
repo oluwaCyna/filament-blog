@@ -31,13 +31,13 @@ class PostsRelationManager extends RelationManager
             ->recordTitleAttribute('title')
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament-blog::filament-blog.title'))
+                    ->label(__('messages.filament-blog.title'))
                     ->limit(40)
                     ->description(function (Post $record) {
                         return Str::limit($record->sub_title);
                     }),
                 Tables\Columns\TextColumn::make('status')
-                    ->label(__('filament-blog::filament-blog.status'))
+                    ->label(__('messages.filament-blog.status'))
                     ->badge()
                     ->color(function ($state) {
                         return $state->getColor();

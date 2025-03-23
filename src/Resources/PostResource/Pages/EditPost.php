@@ -13,9 +13,9 @@ class EditPost extends EditRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.edit_post');
+        return __('messages.filament-blog.edit_post');
     }
-    
+
     protected function getHeaderActions(): array
     {
         return [

@@ -15,7 +15,7 @@ class CreatePost extends CreateRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.create_post');
+        return __('messages.filament-blog.create_post');
     }
 
     //    protected function mutateFormDataBeforeCreate(array $data): array

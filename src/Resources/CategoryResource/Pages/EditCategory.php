@@ -16,9 +16,9 @@ class EditCategory extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
-    
+
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.edit_category');
+        return __('messages.filament-blog.edit_category');
     }
 }

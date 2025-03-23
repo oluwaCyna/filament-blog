@@ -19,6 +19,6 @@ class ListCategories extends ListRecords
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.categories');
+        return __('messages.filament-blog.categories');
     }
 }

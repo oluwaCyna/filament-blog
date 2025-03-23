@@ -20,7 +20,7 @@ class SettingResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament-blog::filament-blog.settings');
+        return __('messages.filament-blog.settings');
     }
 
     public static function form(Form $form): Form
@@ -39,27 +39,27 @@ class SettingResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament-blog::filament-blog.title'))
+                    ->label(__('messages.filament-blog.title'))
                     ->limit(25)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
-                    ->label(__('filament-blog::filament-blog.description'))
+                    ->label(__('messages.filament-blog.description'))
                     ->limit(30)
                     ->searchable(),
 
                 Tables\Columns\ImageColumn::make('logo')
-                    ->label(__('filament-blog::filament-blog.logo')),
+                    ->label(__('messages.filament-blog.logo')),
 
                 Tables\Columns\TextColumn::make('organization_name')
-                    ->label(__('filament-blog::filament-blog.organization_name')),
+                    ->label(__('messages.filament-blog.organization_name')),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label(__('filament-blog::filament-blog.created_at'))
+                    ->label(__('messages.filament-blog.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label(__('filament-blog::filament-blog.updated_at'))
+                    ->label(__('messages.filament-blog.updated_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

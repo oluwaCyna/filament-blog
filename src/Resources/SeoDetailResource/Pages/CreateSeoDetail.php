@@ -11,6 +11,6 @@ class CreateSeoDetail extends CreateRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.create_seo_detail');
+        return __('messages.filament-blog.create_seo_detail');
     }
 }

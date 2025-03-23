@@ -36,7 +36,7 @@ class PostResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament-blog::filament-blog.posts');
+        return __('messages.filament-blog.posts');
     }
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
@@ -58,23 +58,23 @@ class PostResource extends Resource
             ->deferLoading()
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament-blog::filament-blog.title'))
+                    ->label(__('messages.filament-blog.title'))
                     ->description(function (Post $record) {
                         return Str::limit($record->sub_title, 40);
                     })
                     ->searchable()->limit(20),
                 Tables\Columns\TextColumn::make('status')
-                    ->label(__('filament-blog::filament-blog.status'))
+                    ->label(__('messages.filament-blog.status'))
                     ->badge()
                     ->color(function ($state) {
                         return $state->getColor();
                     }),
                 Tables\Columns\ImageColumn::make('cover_photo_path')
-                    ->label(__('filament-blog::filament-blog.cover_photo')),
-                    
+                    ->label(__('messages.filament-blog.cover_photo')),
+
                 UserPhotoName::make('user')
-                    ->label(__('filament-blog::filament-blog.author')),
-                    
+                    ->label(__('messages.filament-blog.author')),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -112,37 +112,37 @@ class PostResource extends Resource
                     Fieldset::make('General')
                         ->schema([
                             TextEntry::make('title')
-                                ->label(__('filament-blog::filament-blog.title')),
+                                ->label(__('messages.filament-blog.title')),
                             TextEntry::make('slug')
-                                ->label(__('filament-blog::filament-blog.slug')),
+                                ->label(__('messages.filament-blog.slug')),
                             TextEntry::make('sub_title')
-                                ->label(__('filament-blog::filament-blog.sub_title')),
+                                ->label(__('messages.filament-blog.sub_title')),
                         ]),
                     Fieldset::make('Publish Information')
-                    ->label(__('filament-blog::filament-blog.publish_information'))
+                        ->label(__('messages.filament-blog.publish_information'))
                         ->schema([
                             TextEntry::make('status')
-                                ->label(__('filament-blog::filament-blog.status'))
+                                ->label(__('messages.filament-blog.status'))
                                 ->badge()->color(function ($state) {
                                     return $state->getColor();
                                 }),
                             TextEntry::make('published_at')
-                                ->label(__('filament-blog::filament-blog.published_at'))
-                            ->visible(function (Post $record) {
-                                return $record->status === PostStatus::PUBLISHED;
-                            }),
+                                ->label(__('messages.filament-blog.published_at'))
+                                ->visible(function (Post $record) {
+                                    return $record->status === PostStatus::PUBLISHED;
+                                }),
 
                             TextEntry::make('scheduled_for')
-                            ->label(__('filament-blog::filament-blog.scheduled_for'))
-                            ->visible(function (Post $record) {
-                                return $record->status === PostStatus::SCHEDULED;
-                            }),
+                                ->label(__('messages.filament-blog.scheduled_for'))
+                                ->visible(function (Post $record) {
+                                    return $record->status === PostStatus::SCHEDULED;
+                                }),
                         ]),
                     Fieldset::make('Description')
-                    ->label(__('filament-blog::filament-blog.description'))
+                        ->label(__('messages.filament-blog.description'))
                         ->schema([
                             TextEntry::make('body')
-                                ->label(__('filament-blog::filament-blog.body'))
+                                ->label(__('messages.filament-blog.body'))
                                 ->html()
                                 ->columnSpanFull(),
                         ]),

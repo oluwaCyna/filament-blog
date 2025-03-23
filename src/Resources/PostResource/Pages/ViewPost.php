@@ -24,7 +24,7 @@ class ViewPost extends ViewRecord
     {
         return [
             Action::make('sendNotification')
-                ->label(__('filament-blog::filament-blog.send_notification'))
+                ->label(__('messages.filament-blog.send_notification'))
                 ->requiresConfirmation()
                 ->icon('heroicon-o-bell')->action(function (Post $record) {
                     event(new BlogPublished($record));
@@ -33,7 +33,7 @@ class ViewPost extends ViewRecord
                     return $record->isNotPublished();
                 }),
             Action::make('preview')
-                ->label(__('filament-blog::filament-blog.preview'))
+                ->label(__('messages.filament-blog.preview'))
                 ->requiresConfirmation()
                 ->icon('heroicon-o-eye')->url(function (Post $record) {
                     return route('filamentblog.post.show', $record->slug);

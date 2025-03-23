@@ -19,6 +19,6 @@ class ListTags extends ListRecords
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.tags');
+        return __('messages.filament-blog.tags');
     }
 }

@@ -11,6 +11,6 @@ class CreateCategory extends CreateRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.create_category');
+        return __('messages.filament-blog.create_category');
     }
 }

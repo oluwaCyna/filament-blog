@@ -19,6 +19,6 @@ class EditSetting extends EditRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.edit_setting');
+        return __('messages.filament-blog.edit_setting');
     }
 }

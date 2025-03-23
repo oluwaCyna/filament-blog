@@ -22,6 +22,6 @@ class ViewCategory extends ViewRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.view_category');
+        return __('messages.filament-blog.view_category');
     }
 }

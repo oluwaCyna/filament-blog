@@ -19,6 +19,6 @@ class EditSeoDetail extends EditRecord
 
     public function getTitle(): string
     {
-        return __('filament-blog::filament-blog.edit_seo_detail');
+        return __('messages.filament-blog.edit_seo_detail');
     }
 }
